@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/GoTopper/static/css/main.9b93bff8.css",
-    "main.js": "/GoTopper/static/js/main.5760b8f1.js",
-    "static/js/488.8f84bc3c.chunk.js": "/GoTopper/static/js/488.8f84bc3c.chunk.js",
-    "index.html": "/GoTopper/index.html",
-    "main.9b93bff8.css.map": "/GoTopper/static/css/main.9b93bff8.css.map",
-    "main.5760b8f1.js.map": "/GoTopper/static/js/main.5760b8f1.js.map",
-    "488.8f84bc3c.chunk.js.map": "/GoTopper/static/js/488.8f84bc3c.chunk.js.map"
+    "main.css": "/Gotopper/static/css/main.9b93bff8.css",
+    "main.js": "/Gotopper/static/js/main.5b239644.js",
+    "static/js/488.8f84bc3c.chunk.js": "/Gotopper/static/js/488.8f84bc3c.chunk.js",
+    "index.html": "/Gotopper/index.html",
+    "main.9b93bff8.css.map": "/Gotopper/static/css/main.9b93bff8.css.map",
+    "main.5b239644.js.map": "/Gotopper/static/js/main.5b239644.js.map",
+    "488.8f84bc3c.chunk.js.map": "/Gotopper/static/js/488.8f84bc3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9b93bff8.css",
-    "static/js/main.5760b8f1.js"
+    "static/js/main.5b239644.js"
   ]
 }
