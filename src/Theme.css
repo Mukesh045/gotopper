@@ -1,0 +1,110 @@
+/* Default Light Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --card-bg-color: #ffffff;
+  --card-border-color: rgba(0, 0, 0, 0.125);
+  --header-bg-color: #f8f9fa;
+  --sidebar-bg-color: #f8f9fa;
+  --sidebar-text-color: #212529;
+  --sidebar-active-bg: #e9ecef;
+  --pre-bg-color: #f0f0f0;
+  --pre-text-color: #212529;
+  --link-color: #0d6efd;
+  --footer-bg: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  --footer-text-color: white;
+  --footer-link-color: #dcdcdc;
+  --footer-link-hover-color: #ffffff;
+  --btn-close-filter: invert(0);
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --card-bg-color: #2a2a2a;
+  --card-border-color: rgba(255, 255, 255, 0.125);
+  --header-bg-color: #212121;
+  --sidebar-bg-color: #212121;
+  --sidebar-text-color: #e0e0e0;
+  --sidebar-active-bg: #333;
+  --pre-bg-color: #2c2c2c;
+  --pre-text-color: #e0e0e_0;
+  --link-color: #64b5f6;
+  --footer-bg: #1e1e1e;
+  --footer-text-color: #e0e0e0;
+  --footer-link-color: #a0a0a0;
+  --footer-link-hover-color: #ffffff;
+  --btn-close-filter: invert(1);
+}
+
+/* Apply theme to body */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Update components to use CSS variables */
+.navbar {
+  background-color: var(--header-bg-color) !important; /* Override Bootstrap's bg-light */
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.navbar .nav-link, .navbar .navbar-brand, .dropdown-item {
+  color: var(--text-color) !important;
+}
+
+.dropdown-menu {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+}
+
+.dropdown-item:hover {
+  background-color: var(--sidebar-active-bg);
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+  border-right: 1px solid var(--card-border-color);
+}
+
+.sidebar-link {
+  color: var(--sidebar-text-color);
+}
+
+.sidebar-link.active {
+  background-color: var(--sidebar-active-bg);
+}
+
+.card, .list-group-item, .alert, .modal-content {
+  background-color: var(--card-bg-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--card-border-color);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.btn-close {
+  filter: var(--btn-close-filter);
+}
+
+.list-group-item-action:hover {
+    background-color: var(--sidebar-active-bg) !important;
+}
+
+.footer {
+  background: var(--footer-bg);
+  color: var(--footer-text-color);
+}
+
+.footer a {
+    color: var(--footer-link-color);
+}
+
+.footer a:hover {
+    color: var(--footer-link-hover-color);
+}

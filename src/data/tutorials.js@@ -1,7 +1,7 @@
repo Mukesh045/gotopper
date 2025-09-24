@@ -1,0 +1,17 @@
+export const tutorials = [
+  { id: 'html', title: 'HTML Tutorial', items: [
+    'HTML HOME', 'HTML Introduction', 'HTML Editors', 'HTML Basic', 'HTML Elements', 'HTML Attributes', 'HTML Headings', 'HTML Paragraphs', 'HTML Styles', 'HTML Formatting', 'HTML Quotations', 'HTML Comments', 'HTML Colors', 'HTML CSS', 'HTML Links', 'HTML Images', 'HTML Favicon', 'HTML Page Title', 'HTML Tables', 'HTML Lists', 'HTML Block & Inline', 'HTML Forms', 'HTML Graphics', 'HTML Media', 'HTML APIs'
+  ]},
+  { id: 'css', title: 'CSS Tutorial', items: [
+    'CSS HOME', 'CSS Introduction', 'CSS Syntax', 'CSS Selectors', 'CSS Box Model', 'CSS Backgrounds', 'CSS Borders', 'CSS Margins', 'CSS Padding', 'CSS Height/Width', 'CSS Outline', 'CSS Text', 'CSS Fonts', 'CSS Icons', 'CSS Links', 'CSS Lists', 'CSS Tables', 'CSS Display', 'CSS Position', 'CSS Overflow', 'CSS Float', 'CSS Inline-block', 'CSS Align', 'CSS Combinators', 'CSS Pseudo-class', 'CSS Pseudo-element', 'CSS Opacity', 'CSS Navigation Bar', 'CSS Dropdowns', 'CSS Image Gallery', 'CSS Image Sprites', 'CSS Attr Selectors', 'CSS Forms', 'CSS Counters', 'CSS Website Layout', 'CSS Units', 'CSS Flexbox', 'CSS Grid'
+  ]},
+  { id: 'js', title: 'JavaScript Tutorial', items: [
+    'JS HOME', 'JS Introduction', 'JS Where To', 'JS Output', 'JS Statements', 'JS Syntax', 'JS Comments', 'JS Variables', 'JS Operators', 'JS Data Types', 'JS Functions', 'JS Objects', 'JS Events', 'JS Strings', 'JS String Methods', 'JS Numbers', 'JS Number Methods', 'JS Arrays', 'JS Array Methods', 'JS Math', 'JS Date', 'JS Booleans', 'JS Comparisons', 'JS If Else', 'JS Switch', 'JS Loops', 'JS Break', 'JS Type Conversion', 'JS Errors', 'JS Debugging', 'JS Scope', 'JS Let', 'JS Const', 'JS Class', 'JS Modules', 'JS Sets', 'JS Maps', 'JS WeakSet', 'JS WeakMap', 'JS JSON', 'JS Promise', 'JS Async', 'JS Await'
+  ]},
+  { id: 'java', title: 'Java Tutorial', items: [
+    'Java HOME', 'Java Introduction', 'Java Syntax', 'Java Variables', 'Java Data Types', 'Java Operators', 'Java Control Statements', 'Java Arrays', 'Java Methods', 'Java Classes', 'Java Objects', 'Java Inheritance', 'Java Polymorphism', 'Java Abstraction', 'Java Encapsulation', 'Java Interfaces', 'Java Packages', 'Java Exception Handling', 'Java File I/O', 'Java Threads', 'Java Collections', 'Java Generics', 'Java Lambda Expressions', 'Java Stream API'
+  ]},
+  { id: 'python', title: 'Python Tutorial', items: [
+    'Python HOME', 'Python Introduction', 'Python Syntax', 'Python Variables', 'Python Data Types', 'Python Operators', 'Python Control Flow', 'Python Functions', 'Python Modules', 'Python File Handling', 'Python Exceptions', 'Python Classes', 'Python Objects', 'Python Inheritance', 'Python Polymorphism', 'Python Decorators', 'Python Generators', 'Python Lambda', 'Python List Comprehension', 'Python Dictionary Comprehension', 'Python Sets', 'Python Tuples'
+  ]}
+];

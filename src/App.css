@@ -1,3 +1,19 @@
+/* Lenis smooth scroll styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 .App {
   text-align: center;
 }
@@ -14,25 +30,209 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #004080; /* Dark blue background */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #3b85f3; /* Light blue text */
+  padding-top: 20px;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #99bbff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #99bbff;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #99bbff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #003366;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #003366;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/* Links */
+a {
+  color: #004080;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003366;
+}
+
+/* CodeMirror editor styling overrides */
+.CodeMirror {
+  background-color: #0b0d0f !important;
+  border: 1px solid #99bbff !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  height: 250px !important;
+}
+
+/* Output preformatted text styling */
+pre {
+  background-color: #cce0ff;
+  border: 1px solid #99bbff;
+  padding: 15px;
+  border-radius: 4px;
+  color: #003366;
+  white-space: pre-wrap;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 96px; /* Adjust based on your actual header height */
+  left: 0;
+  width: 280px; /* Must match the margin-left on .main-content.with-sidebar */
+  height: calc(100vh - 76px); /* Full viewport height minus header height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px;
+  border-right: 1px solid var(--card-border-color);
+  background-color: var(--sidebar-bg-color);
+}
+
+.sidebar-title {
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar .nav-link {
+  color: #004080;
+  padding: 0.5rem 0.75rem;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #e9ecef;
+}
+
+.sidebar .nav-link.active {
+  background-color: #004080;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Footer styling if any */
+footer {
+  background-color: #004080;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  border-radius: 0 0 8px 8px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout and Sidebar styles */
+body, html, #root {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #64aad3;
+  background-color: transparent;
+}
+
+/* Scrollbar for sidebar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Header fix */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Container padding to avoid overlap with fixed header */
+.container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1 0 auto; /* Allow main content to grow and fill available space */
+  padding-top: 76px; /* Match header height */
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.main-content.with-sidebar {
+  margin-left: 280px; /* Sidebar width */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding: 0;
 }
