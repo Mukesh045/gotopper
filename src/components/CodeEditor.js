@@ -47,6 +47,7 @@ const CodeEditor = ({ language, initialCode }) => {
     const currentCode = codeContext.getCurrentCode();
     try {
       // Using JDoodle API for cloud code execution
+      // NOTE: This requires JDoodle API credentials
       const response = await fetch('https://api.jdoodle.com/v1/execute', {
         method: 'POST',
         headers: {
@@ -56,10 +57,14 @@ const CodeEditor = ({ language, initialCode }) => {
           script: currentCode,
           language: language === 'java' ? 'java' : language === 'python' ? 'python3' : language,
           versionIndex: language === 'java' ? '3' : language === 'python' ? '3' : '0',
-          clientId: 'your_client_id', // You'll need to get this from JDoodle
-          clientSecret: 'your_client_secret' // You'll need to get this from JDoodle
+          clientId: process.env.REACT_APP_JDOODLE_CLIENT_ID || 'your_client_id',
+          clientSecret: process.env.REACT_APP_JDOODLE_CLIENT_SECRET || 'your_client_secret'
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
 
       const data = await response.json();
       if (data.output) {
@@ -71,7 +76,7 @@ const CodeEditor = ({ language, initialCode }) => {
       }
     } catch (error) {
       console.error('Cloud execution error:', error);
-      setOutput('Error executing code in cloud. Please try again later.');
+      setOutput(`Cloud execution failed: ${error.message}. JDoodle API credentials required. Please run locally with backend server for Java/Python execution.`);
     }
   };
 
