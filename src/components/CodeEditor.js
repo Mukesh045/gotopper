@@ -110,7 +110,13 @@ const CodeEditor = ({ language, initialCode }) => {
   };
 
   const runCode = async () => {
-    // Always try backend first, fall back to local execution if backend fails
+    // Check if we're on GitHub Pages (no backend available)
+    if (window.location.hostname.includes('github.io')) {
+      runCodeLocally();
+      return;
+    }
+
+    // For local development or other environments, try backend first, then fallback
     try {
       await runCodeBackend();
     } catch (error) {
