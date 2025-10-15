@@ -158,13 +158,8 @@ const CodeEditor = ({ language, initialCode }) => {
       return;
     }
 
-    // For local development or other environments, try backend first, then fallback
-    try {
-      await runCodeBackend();
-    } catch (error) {
-      // Backend failed, try local execution
-      runCodeLocally();
-    }
+    // For local development or other environments, try backend first
+    await runCodeBackend();
   };
 
   const renderOutput = () => {
