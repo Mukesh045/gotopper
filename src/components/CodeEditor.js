@@ -111,7 +111,7 @@ const CodeEditor = ({ language, initialCode }) => {
 
   const runCode = () => {
     // Check if we're on GitHub Pages (no backend available)
-    if (window.location.hostname === 'mukesh045.github.io' || window.location.hostname === 'github.io') {
+    if (window.location.hostname.includes('github.io') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       runCodeLocally();
     } else {
       runCodeBackend();
