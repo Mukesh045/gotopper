@@ -160,6 +160,9 @@ const CodeEditor = ({ language, initialCode }) => {
     return <pre style={{ backgroundColor: '#f0f0f0', padding: '10px', marginTop: '10px' }}>{output}</pre>;
   };
 
+  const isGitHubPages = window.location.hostname.includes('github.io');
+  const isBackendRequired = language === 'java' || language === 'python';
+
   return (
     <div>
       <div className="code-editor-wrapper">
@@ -183,7 +186,14 @@ const CodeEditor = ({ language, initialCode }) => {
           }}
         />
       </div>
-      <button onClick={runCode} style={{ marginTop: '10px' }}>Run Code</button>
+      {isGitHubPages && isBackendRequired ? (
+        <div style={{ marginTop: '10px', padding: '10px', backgroundColor: '#fff3cd', border: '1px solid #ffeaa7', borderRadius: '4px' }}>
+          <strong>Note:</strong> {language.charAt(0).toUpperCase() + language.slice(1)} execution requires a backend server.
+          Please run this locally with <code>npm start</code> to use the compiler.
+        </div>
+      ) : (
+        <button onClick={runCode} style={{ marginTop: '10px' }}>Run Code</button>
+      )}
       {renderOutput()}
     </div>
   );
