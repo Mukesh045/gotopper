@@ -80,19 +80,38 @@ const CodeEditor = ({ language, initialCode }) => {
       try {
         // For JavaScript, we'll try to execute it in a safe way
         // Note: This is limited and not as robust as server-side execution
+        let output = '';
+        const originalConsoleLog = console.log;
+        console.log = (...args) => {
+          output += args.join(' ') + '\n';
+        };
+
         const result = eval(currentCode);
-        setOutput(String(result));
+
+        // Restore original console.log
+        console.log = originalConsoleLog;
+
+        // If there was console output, show it
+        if (output) {
+          setOutput(output.trim());
+        } else if (result !== undefined) {
+          // If there's a return value, show it
+          setOutput(String(result));
+        } else {
+          // If no output and no return value, show a success message
+          setOutput('Code executed successfully (no output)');
+        }
       } catch (error) {
         setOutput(`JavaScript Error: ${error.message}`);
       }
     } else {
-      setOutput('Local execution not supported for this language. Backend required.');
+      setOutput('Local execution not supported for this language. A backend server is required to run Java and Python code.');
     }
   };
 
   const runCode = () => {
     // Check if we're on GitHub Pages (no backend available)
-    if (window.location.hostname === 'mukesh045.github.io') {
+    if (window.location.hostname === 'mukesh045.github.io' || window.location.hostname === 'github.io') {
       runCodeLocally();
     } else {
       runCodeBackend();
