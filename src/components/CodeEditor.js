@@ -62,12 +62,41 @@ const CodeEditor = ({ language, initialCode }) => {
       const data = await response.json();
       setOutput(data.output || 'No output');
     } catch (error) {
-      setOutput('Error connecting to backend.');
+      console.error('Backend connection error:', error);
+      setOutput('Error connecting to backend. Make sure the backend server is running.');
+    }
+  };
+
+  // Function to run code locally in browser (fallback for HTML/CSS/JS)
+  const runCodeLocally = () => {
+    const currentCode = codeContext.getCurrentCode();
+
+    if (language === 'html') {
+      setOutput(currentCode);
+    } else if (language === 'css') {
+      const htmlWithCss = `<html><head><style>${currentCode}</style></head><body><h1>Styled Heading</h1><p>This paragraph is styled by your CSS code.</p><button>A Button</button></body></html>`;
+      setOutput(htmlWithCss);
+    } else if (language === 'js') {
+      try {
+        // For JavaScript, we'll try to execute it in a safe way
+        // Note: This is limited and not as robust as server-side execution
+        const result = eval(currentCode);
+        setOutput(String(result));
+      } catch (error) {
+        setOutput(`JavaScript Error: ${error.message}`);
+      }
+    } else {
+      setOutput('Local execution not supported for this language. Backend required.');
     }
   };
 
   const runCode = () => {
-    runCodeBackend();
+    // Check if we're on GitHub Pages (no backend available)
+    if (window.location.hostname === 'mukesh045.github.io') {
+      runCodeLocally();
+    } else {
+      runCodeBackend();
+    }
   };
 
   const renderOutput = () => {
