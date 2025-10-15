@@ -6,7 +6,7 @@ const JSCompiler = () => {
   return (
     <div>
       <h1>JavaScript Compiler</h1>
-      <CodeEditor language="javascript" initialCode={defaultJSCode} />
+      <CodeEditor language="js" initialCode={defaultJSCode} />
     </div>
   );
 };

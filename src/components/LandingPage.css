@@ -256,4 +256,41 @@
   .benefits-list {
     font-size: 1rem;
   }
+
+  .hero-section {
+    padding: 50px 15px;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .why-choose-section,
+  .get-started-section {
+    padding: 60px 15px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .benefits-list li {
+    font-size: 0.9rem;
+  }
+
+  .get-started-btn {
+    font-size: 1.1rem;
+    padding: 12px 30px;
+  }
 }

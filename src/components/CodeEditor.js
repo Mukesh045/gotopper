@@ -30,13 +30,15 @@ const CodeEditor = ({ language, initialCode }) => {
   };
 
   useEffect(() => {
+    // Set the current language in the context. This will trigger the provider to load the correct code.
+    codeContext.setLanguage(language);
+
     // If initialCode is provided (e.g., from a "Try it Yourself" button),
     // it should always override the current code for that language.
     if (initialCode) {
       codeContext.updateCode(language, initialCode);
     }
-    // Set the current language in the context. This will trigger the provider to load the correct code.
-    codeContext.setLanguage(language);
+
     setOutput(''); // Clear previous output on language change
   }, [language, initialCode, codeContext.updateCode, codeContext.setLanguage]);
 
@@ -109,7 +111,7 @@ const CodeEditor = ({ language, initialCode }) => {
         <ControlledCodeMirror
           value={code}
           options={{
-            mode: language === 'java' ? 'text/x-java' : language === 'c' ? 'text/x-csrc' : language,
+            mode: language === 'java' ? 'text/x-java' : language === 'js' ? 'javascript' : language,
             theme: 'material',
             lineNumbers: true,
             lineWrapping: true,

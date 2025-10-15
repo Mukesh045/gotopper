@@ -78,11 +78,9 @@ const CodeProvider = ({ children }) => {
   // Set current language
   const setLanguage = useCallback((language) => {
     if (language) {
-      // Always reset the code to the default for the new language when switching
-      resetCode(language);
       setCurrentLanguage(language);
     }
-  }, [resetCode]);
+  }, []);
 
   // Get current code (for the active language)
   const getCurrentCode = useCallback(() => {

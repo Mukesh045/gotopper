@@ -22,14 +22,11 @@ import { AuthProvider } from './context/AuthProvider';
 import AdminAuthProvider from './context/AdminAuthProvider';
 import { ThemeProvider } from './context/ThemeProvider';
 import CodeProvider from './context/CodeProvider';
-import CompilerPage from './components/CompilerPage';
-import {
-  defaultHTMLCode,
-  defaultCSSCode,
-  defaultJSCode,
-  defaultJavaCode,
-  defaultPythonCode
-} from './data/defaultCode';
+import HTMLCompiler from './components/HTMLCompiler';
+import CSSCompiler from './components/CSSCompiler';
+import JSCompiler from './components/JSCompiler';
+import JavaCompiler from './components/JavaCompiler';
+import PythonCompiler from './components/PythonCompiler';
 
 function App() {
   return (
@@ -60,11 +57,11 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="search" element={<SearchPage />} />
 
-              <Route path="compiler/html" element={<CompilerPage language="html" title="HTML Compiler" defaultCode={defaultHTMLCode} />} />
-              <Route path="compiler/css" element={<CompilerPage language="css" title="CSS Compiler" defaultCode={defaultCSSCode} />} />
-              <Route path="compiler/js" element={<CompilerPage language="js" title="JavaScript Compiler" defaultCode={defaultJSCode} />} />
-              <Route path="compiler/java" element={<CompilerPage language="java" title="Java Compiler" defaultCode={defaultJavaCode} />} />
-              <Route path="compiler/python" element={<CompilerPage language="python" title="Python Compiler" defaultCode={defaultPythonCode} />} />
+              <Route path="compiler/html" element={<HTMLCompiler />} />
+              <Route path="compiler/css" element={<CSSCompiler />} />
+              <Route path="compiler/js" element={<JSCompiler />} />
+              <Route path="compiler/java" element={<JavaCompiler />} />
+              <Route path="compiler/python" element={<PythonCompiler />} />
 
               {/* Admin Routes */}
               <Route path="admin/login" element={<AdminLogin />} />

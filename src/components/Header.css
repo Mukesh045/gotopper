@@ -120,4 +120,29 @@
   .search-form {
     margin-top: 10px;
   }
+
+  .navbar-toggler {
+    border: none;
+    background: transparent;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+}
+
+/* Additional responsive improvements */
+@media (max-width: 576px) {
+  .navbar-brand img {
+    height: 35px !important;
+  }
+
+  .search-input {
+    font-size: 14px !important;
+  }
+
+  .btn-outline-success {
+    font-size: 14px !important;
+    padding: 4px 12px !important;
+  }
 }

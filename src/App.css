@@ -99,7 +99,31 @@ button:hover {
   border: 1px solid #99bbff !important;
   border-radius: 20px !important;
   font-size: 16px !important;
-  height: 250px !important;
+  height: 500px !important;
+}
+
+/* Fix line numbers overlapping with code */
+.CodeMirror-gutters {
+  border-right: 1px solid #99bbff !important;
+  background-color: #0b0d0f !important;
+  width: 50px !important; /* Ensure enough space for line numbers */
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  z-index: 3 !important;
+}
+
+.CodeMirror-linenumber {
+  color: #99bbff !important;
+  padding-right: 8px !important;
+  text-align: right !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.CodeMirror-sizer {
+  margin-left: 50px !important; /* Push code area away from gutter */
 }
 
 /* Output preformatted text styling */
@@ -236,3 +260,6 @@ header {
   width: 100%;
   padding: 0;
 }
+
+/* Import responsive styles */
+@import './components/Responsive.css';

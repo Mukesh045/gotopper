@@ -142,6 +142,42 @@
   .languages-grid {
     grid-template-columns: 1fr;
   }
+
+  .home-hero {
+    padding: 60px 15px;
+  }
+
+  .language-card {
+    padding: 1.5rem;
+  }
+
+  .cta-section {
+    padding: 60px 15px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 576px) {
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    font-size: 1.1rem;
+    padding: 12px 30px;
+  }
 }
 
 /* Icon Styles */

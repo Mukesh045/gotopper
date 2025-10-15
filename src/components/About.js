@@ -9,7 +9,7 @@ const About = () => {
           We are a team of passionate individuals dedicated to delivering the best experience for our users. Our mission is to build products that are not only useful but also a joy to use.
         </p>
         <p>
-          Founded in [Year], our company has been at the forefront of innovation, constantly pushing the boundaries of what's possible. We believe in collaboration, transparency, and putting our customers first.
+          Founded in [2025], our company has been at the forefront of innovation, constantly pushing the boundaries of what's possible. We believe in collaboration, transparency, and putting our customers first.
         </p>
       </div>
     </section>

@@ -90,3 +90,16 @@
   color: white;
   padding-left: 20px;
 }
+
+/* Responsive sidebar styles */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    width: 250px !important;
+  }
+}
