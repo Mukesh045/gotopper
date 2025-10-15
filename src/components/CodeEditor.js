@@ -42,6 +42,39 @@ const CodeEditor = ({ language, initialCode }) => {
     setOutput(''); // Clear previous output on language change
   }, [language, initialCode, codeContext.updateCode, codeContext.setLanguage]);
 
+  // Function to run code using cloud service for GitHub Pages
+  const runCodeCloud = async () => {
+    const currentCode = codeContext.getCurrentCode();
+    try {
+      // Using JDoodle API for cloud code execution
+      const response = await fetch('https://api.jdoodle.com/v1/execute', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          script: currentCode,
+          language: language === 'java' ? 'java' : language === 'python' ? 'python3' : language,
+          versionIndex: language === 'java' ? '3' : language === 'python' ? '3' : '0',
+          clientId: 'your_client_id', // You'll need to get this from JDoodle
+          clientSecret: 'your_client_secret' // You'll need to get this from JDoodle
+        }),
+      });
+
+      const data = await response.json();
+      if (data.output) {
+        setOutput(data.output);
+      } else if (data.error) {
+        setOutput(`Error: ${data.error}`);
+      } else {
+        setOutput('No output');
+      }
+    } catch (error) {
+      console.error('Cloud execution error:', error);
+      setOutput('Error executing code in cloud. Please try again later.');
+    }
+  };
+
   // Function to run code using local backend
   const runCodeBackend = async () => {
     const currentCode = codeContext.getCurrentCode(); // Get the latest code on execution
@@ -110,9 +143,13 @@ const CodeEditor = ({ language, initialCode }) => {
   };
 
   const runCode = async () => {
-    // Check if we're on GitHub Pages (no backend available)
+    // Check if we're on GitHub Pages (use cloud execution for Java/Python)
     if (window.location.hostname.includes('github.io')) {
-      runCodeLocally();
+      if (language === 'java' || language === 'python') {
+        await runCodeCloud();
+      } else {
+        runCodeLocally();
+      }
       return;
     }
 
@@ -186,14 +223,7 @@ const CodeEditor = ({ language, initialCode }) => {
           }}
         />
       </div>
-      {isGitHubPages && isBackendRequired ? (
-        <div style={{ marginTop: '10px', padding: '10px', backgroundColor: '#fff3cd', border: '1px solid #ffeaa7', borderRadius: '4px' }}>
-          <strong>Note:</strong> {language.charAt(0).toUpperCase() + language.slice(1)} execution requires a backend server.
-          Please run this locally with <code>npm start</code> to use the compiler.
-        </div>
-      ) : (
-        <button onClick={runCode} style={{ marginTop: '10px' }}>Run Code</button>
-      )}
+      <button onClick={runCode} style={{ marginTop: '10px' }}>Run Code</button>
       {renderOutput()}
     </div>
   );
