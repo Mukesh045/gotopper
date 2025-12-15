@@ -148,17 +148,18 @@ const CodeEditor = ({ language, initialCode }) => {
   };
 
   const runCode = async () => {
-    // Check if we're on GitHub Pages (use cloud execution for Java/Python)
+    // Check if we're on GitHub Pages
     if (window.location.hostname.includes('github.io')) {
       if (language === 'java' || language === 'python') {
-        await runCodeCloud();
+        // On GitHub Pages, show message that backend is required
+        setOutput('Backend server required for Java/Python execution. Please run locally with npm start to use the code editor.');
       } else {
         runCodeLocally();
       }
       return;
     }
 
-    // For local development or other environments, try backend first
+    // For local development or other environments, use backend
     await runCodeBackend();
   };
 
