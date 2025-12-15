@@ -20,7 +20,7 @@ tutorials.forEach(tutorial => {
   });
 });
 
-const Header = () => {
+const Header = ({ toggleSidebar, sidebarOpen, isTutorialPage }) => {
   const [query, setQuery] = useState('');
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
@@ -64,6 +64,11 @@ const Header = () => {
           <Link className="navbar-brand" to="/">
             <img src="https://i.postimg.cc/fb2WF2fK/gt.jpg" alt="Go Topper" style={{ height: '60px' }} />
           </Link>
+          {isTutorialPage && (
+            <button className="btn btn-outline-secondary me-2 sidebar-toggle-btn" onClick={toggleSidebar} aria-label="Toggle sidebar">
+              <i className={`bi ${sidebarOpen ? 'bi-x' : 'bi-list'}`}></i>
+            </button>
+          )}
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -103,11 +108,10 @@ const Header = () => {
                 <Link className="nav-link" to="/admin/login">Admin Login</Link>
               </li>
             </ul>
-            <button onClick={toggleTheme} className="btn btn-outline-secondary me-3 theme-toggle-btn">
-              {theme === 'light' ? 
-                <i className="bi bi-moon-stars-fill"></i> : 
-                <i className="bi bi-sun-fill"></i>
-              }
+            <button onClick={toggleTheme} className={`btn btn-outline-secondary me-3 theme-toggle-btn ${theme}`} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
+              <i className="bi bi-sun-fill sun-icon"></i>
+              <i className="bi bi-moon-stars-fill moon-icon"></i>
+              <div className="toggle-slider"></div>
             </button>
             <ul className="navbar-nav me-3">
               {user ? (

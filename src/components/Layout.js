@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import Header from './Header';
@@ -8,6 +8,7 @@ import Footer from './Footer';
 const Layout = () => {
   const location = useLocation();
   const isTutorialPage = ['/html', '/css', '/js', '/java', '/python'].some(path => location.pathname.startsWith(path));
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -24,11 +25,16 @@ const Layout = () => {
     };
   }, []);
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="page-container">
-      <Header />
+      <Header toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} isTutorialPage={isTutorialPage} />
       <div className="main-layout">
-        {isTutorialPage && <Sidebar />}
+        {isTutorialPage && <Sidebar sidebarOpen={sidebarOpen} />}
+        {isTutorialPage && sidebarOpen && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
         <main className={isTutorialPage ? 'main-content with-sidebar' : 'main-content'}>
           <div className={isTutorialPage ? 'content-wrapper' : 'container'}>
             <Outlet />

@@ -6,7 +6,12 @@
 @media (max-width: 767px) {
   /* Hide sidebar on mobile */
   .sidebar {
-    display: none !important;
+    display: block !important;
+    left: -280px !important;
+  }
+
+  .sidebar.open {
+    left: 0 !important;
   }
 
   /* Adjust main content for mobile */

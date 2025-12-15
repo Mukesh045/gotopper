@@ -4,7 +4,7 @@ import { tutorials } from '../data/tutorials';
 import { notes as staticNotesData } from '../data/notes'; // Assuming this has the new structure
 import './Sidebar.css';
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarOpen }) => {
   const location = useLocation();
   const currentTutorialId = location.pathname.split('/')[1];
   const tutorial = tutorials.find(t => t.id === currentTutorialId);
@@ -103,7 +103,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar" data-lenis-prevent>
+    <div className={`sidebar ${sidebarOpen ? 'open' : ''}`} data-lenis-prevent>
       <div className="sidebar-header">
         <h3>{tutorial.title.toUpperCase()}</h3>
       </div>

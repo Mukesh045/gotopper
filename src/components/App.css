@@ -1,37 +1,53 @@
-/* In a global CSS file like App.css or index.css */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 .main-layout {
   display: flex;
-  flex-direction: column; /* Stack sidebar and main content on mobile */
+  flex: 1;
 }
 
-/* Apply row layout for larger screens using a media query */
-@media (min-width: 768px) { /* Bootstrap's 'md' breakpoint */
-  .main-layout {
-    flex-direction: row;
+.main-content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.with-sidebar {
+  margin-left: 250px;
+}
+
+.content-wrapper {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sidebar-overlay {
+    display: block;
   }
 
   .main-content.with-sidebar {
-    /* flex-grow: 1 allows this element to take up available space */
-    flex-grow: 1; 
-    /* You might need to adjust this if your sidebar has a fixed width */
-    width: calc(100% - 250px); 
-  }
-
-  .footer.with-sidebar {
-    /* Adjust footer margin to account for the sidebar width */
-    margin-left: 250px; 
-  }
-}
-
-/* Sidebar styling */
-.sidebar {
-  flex-shrink: 0; /* Prevent sidebar from shrinking */
-  width: 100%;    /* Full width on mobile */
-}
-
-@media (min-width: 768px) {
-  .sidebar {
-    width: 250px; /* Fixed width on desktop */
+    margin-left: 0;
   }
 }
