@@ -32,6 +32,11 @@ const Layout = () => {
   return (
     <div className="page-container">
       <Header toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} isTutorialPage={isTutorialPage} />
+      {isTutorialPage && (
+        <button className="sidebar-arrow-toggle" onClick={toggleSidebar} aria-label="Toggle sidebar">
+          <i className={`fas ${sidebarOpen ? 'fa-chevron-left' : 'fa-chevron-right'}`}></i>
+        </button>
+      )}
       <div className="main-layout">
         {isTutorialPage && <Sidebar sidebarOpen={sidebarOpen} />}
         {isTutorialPage && sidebarOpen && <div className="sidebar-overlay" onClick={toggleSidebar}></div>}
