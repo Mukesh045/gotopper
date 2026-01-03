@@ -3,6 +3,12 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1020;
+  height: 70px;
 }
 
 .sidebar-toggle-btn {
@@ -74,6 +80,11 @@
   cursor: pointer;
 }
 
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
 .theme-toggle-btn .sun-icon,
 .theme-toggle-btn .moon-icon {
   font-size: 18px;
@@ -89,7 +100,7 @@
   height: 36px;
   background: white;
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -102,19 +113,19 @@
 }
 
 .theme-toggle-btn.dark .sun-icon {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .theme-toggle-btn.dark .moon-icon {
-  color: #333;
+  color: #ffffff;
 }
 
 .theme-toggle-btn.light .sun-icon {
-  color: #333;
+  color: #ffffff;
 }
 
 .theme-toggle-btn.light .moon-icon {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .theme-toggle-btn:hover {
@@ -145,6 +156,12 @@
 
   .search-form {
     margin-top: 10px;
+    width: 100%;
+    display: flex;
+  }
+  
+  .search-form .form-control {
+    flex: 1;
   }
 
   .sidebar-toggle-btn {

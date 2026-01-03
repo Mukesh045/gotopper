@@ -1,17 +1,56 @@
+/* ============================================
+   UNIVERSAL RESPONSIVE PATCH
+   Paste this at the top of your CSS file
+   ============================================ */
+
+/* 1. Fix the box model so padding doesn't break widths */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Prevent horizontal scrolling on mobile */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Crucial for mobile */
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Make all images, videos, and iframes fluid */
+/* This prevents large images from breaking mobile layouts */
+img, video, iframe, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 4. Ensure text doesn't overflow containers */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 5. A standard responsive container class */
+/* Use <div class="container"> around your main content */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Stops stretching on huge screens */
+  margin: 0 auto;    /* Centers the container */
+  padding: 0 20px;   /* Adds safe space on mobile edges */
+}
+
 /* Comprehensive Responsive Styles for GoTopper Application */
 
 /* Mobile First Approach - Base styles are for mobile */
 
 /* General Mobile Styles */
 @media (max-width: 767px) {
-  /* Hide sidebar on mobile */
+  /* Hide sidebar on mobile - using transform for consistency */
   .sidebar {
-    display: block !important;
-    left: -280px !important;
+    transform: translateX(-100%);
   }
 
   .sidebar.open {
-    left: 0 !important;
+    transform: translateX(0);
   }
 
   /* Adjust main content for mobile */
@@ -129,6 +168,30 @@
   /* Code editor */
   .code-editor-wrapper .CodeMirror {
     height: 300px !important;
+    font-size: 14px !important;
+  }
+
+  /* CodeMirror toolbar and controls */
+  .code-editor-wrapper .CodeMirror-toolbar {
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+  }
+
+  .code-editor-wrapper .CodeMirror-toolbar button {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  /* Better code editor layout on mobile */
+  .code-editor-container {
+    flex-direction: column !important;
+  }
+
+  .code-output-panel {
+    height: 200px !important;
+    border-top: 1px solid #dee2e6 !important;
   }
 
   /* Buttons */
@@ -173,6 +236,136 @@
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+  }
+}
+
+/* Very Small Mobile Styles (480px and below) */
+@media (max-width: 480px) {
+  /* Further reduce padding and margins */
+  .hero-section {
+    padding: 40px 10px !important;
+  }
+
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+  }
+
+  .feature-card,
+  .language-card {
+    padding: 1rem !important;
+  }
+
+  .section-title {
+    font-size: 1.6rem !important;
+  }
+
+  /* Smaller buttons and inputs */
+  .hero-cta,
+  .cta-btn,
+  .get-started-btn {
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Adjust navbar for very small screens */
+  .navbar-brand img {
+    height: 35px !important;
+  }
+
+  .theme-toggle-btn {
+    width: 70px !important;
+    height: 35px !important;
+    min-width: 70px !important;
+    min-height: 35px !important;
+  }
+
+  /* Code editor for very small screens */
+  .code-editor-wrapper .CodeMirror {
+    height: 250px !important;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 20px 10px !important;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 1rem !important;
+  }
+}
+
+/* Extra Small Mobile Styles (360px and below) */
+@media (max-width: 360px) {
+  /* Minimal padding for very small screens */
+  .hero-section {
+    padding: 30px 8px !important;
+  }
+
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem !important;
+  }
+
+  .section-title {
+    font-size: 1.4rem !important;
+  }
+
+  .feature-card,
+  .language-card {
+    padding: 0.8rem !important;
+  }
+
+  /* Very small buttons */
+  .hero-cta,
+  .cta-btn,
+  .get-started-btn {
+    padding: 8px 16px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Minimal navbar */
+  .navbar-brand img {
+    height: 30px !important;
+  }
+
+  .theme-toggle-btn {
+    width: 60px !important;
+    height: 30px !important;
+    min-width: 60px !important;
+    min-height: 30px !important;
+  }
+
+  /* Very small code editor */
+  .code-editor-wrapper .CodeMirror {
+    height: 200px !important;
+  }
+
+  /* Minimal footer */
+  .footer {
+    padding: 15px 8px !important;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 0.9rem !important;
+  }
+
+  /* Adjust modal for very small screens */
+  .modal-dialog {
+    margin: 5px !important;
+    max-width: calc(100vw - 10px) !important;
+  }
+
+  .modal-body {
+    padding: 15px !important;
   }
 }
 
